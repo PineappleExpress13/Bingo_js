@@ -24,6 +24,9 @@ $(document).ready(function(){
     var numero = 0;
     var base = 0;
     var hueco= 0;
+    var baseHueco = 0;
+    var huecosUsados = new Array(27);
+    var rutaImagen= "Assets/src/hueco.jpg"
  
    
     Iniciar();
@@ -34,6 +37,13 @@ $(document).ready(function(){
     function Iniciar(){
         for(var i = 0; i<27; i++){
             AsginarNum(i);
+            if(i==8 || i==17 || i==26)
+            {
+                while(hueco!=4){
+                AsignaHuecos(i);    
+                }
+                hueco=0;
+            }
  
         }
     }
@@ -69,6 +79,20 @@ $(document).ready(function(){
             usados[j] = false;
         }
     }
+
+    function AsignaHuecos(i)
+    {
+        baseHueco = i-8;
+        var pos = baseHueco + Math.floor(Math.random()*9);
+        if(huecosUsados[pos]!=true)
+        {
+            $('#numero'+pos).html('<img src="'+rutaImagen+'" id="hueco">');
+            huecosUsados[pos]=true;
+            hueco++;
+        }
+        else
+            AsignaHuecos(i);
+    }
 	 
 	 
     $('#Nuevo').click(function(){
@@ -79,7 +103,7 @@ $(document).ready(function(){
     $('td').click(function(){
 		
         var estilo = this.style;
-        estilo.backgroundColor = estilo.backgroundColor? "":"#00FF00";
+        estilo.backgroundColor = estilo.backgroundColor? "":"#DF0101";
     });
 
 });
