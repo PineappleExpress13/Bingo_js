@@ -18,6 +18,10 @@ $(document).ready(function(){
 		$arrayBase: guarda las bases para los aleatorios según su posición en la tabla
 		$numero: Es el numero que aparecerá en el cartón
 		$base: Es la base que se usará para el número
+        $hueco: Guarda el número de huecos que ya existe en cada línea
+        $baseHueco: Es la base de la posición del hueco
+        $huecosUsados: Array que guarda las posiciones de los huecos para no repetir
+        $rutaImagen: Ruta de la imagen que se muestra en los huecos
    	*/
     var usados = new Array(27);
     var arrayBase = new Array(0,1,2,3,4,5,6,7,8,0,1,2,3,4,5,6,7,8,0,1,2,3,4,5,6,7,8);
@@ -72,14 +76,17 @@ $(document).ready(function(){
 
     }
 	 /*
-	 Resetea todos los numeros usados
+	 Resetea todos los numeros usados y todos los huecos
 	 */
     function Resetear(){
         for(var j = 0; j < usados.length; j++){
             usados[j] = false;
+            huecosUsados[j] = false;
         }
     }
-
+    /*
+    Asigna a una posición como "hueco" ocultando su número e incluyendo la imagen proporcionada en la practica
+    */
     function AsignaHuecos(i)
     {
         baseHueco = i-8;
