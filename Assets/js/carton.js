@@ -1,17 +1,3 @@
-/*var carton = new array();
-
-
-function GenerarNumeros()
-{
-  for(var c = 0; x < 9; c++)
-  {
-    carton[c] = new array(3);
-    for(var f = 0; x < 3; f++)
-    {
-      
-    }
-  }
-}*/
 $(document).ready(function(){
    	/*
 		$Usados:Array que contiene los numeros que ya se han asignado para que no se repitan
@@ -31,9 +17,15 @@ $(document).ready(function(){
     var baseHueco = 0;
     var huecosUsados = new Array(27);
     var rutaImagen= "Assets/src/hueco.jpg"
+    var numBombo = new Array(90);
+
+    for (i = 0; i < numBombo.length; i++) { 
+    numBombo[i]=i+1;
+    }
  
    
     Iniciar();
+    var timer = setInterval(Bola,3000);
    
    /*
 	Asigna un número a cada td.
@@ -100,12 +92,27 @@ $(document).ready(function(){
         else
             AsignaHuecos(i);
     }
+
+    function Bola()
+    {
+        var datos={bombo:numBombo}
+        $.post("Assets/js/bombo.php",datos,ProcesarRespuesta);
+    }
+
+    function ProcesarRespuesta(datos_devueltos)
+    {
+    var aux=parseInt(datos_devueltos);
+    $("#bombo").html(numBombo[aux]);
+    numBombo.splice(aux,1);
+    }
 	 
 	 
     $('#Nuevo').click(function(){
         Resetear();
         Iniciar();
     });
+
+
 	 
     $('td').click(function(){
 		
