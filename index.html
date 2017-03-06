@@ -20,7 +20,29 @@
         <script type="text/javascript" src="Assets/js/carton.js"></script>
     </head>
     <body>
-        <div id="bombo" align="center">
+    <div id="col-md-4">
+    <form>
+       <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Nº de jugadores</span>
+          <input type="number" id="jugadores" value="5" min="5" max="20" aria-describedby="basic-addon1">
+        </div>
+        </br>
+        <p>Apuesta:
+        <select id="apuesta">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+            </p>
+
+        <button type="submit" id="iniciar"  >iniciar</button>
+    </form>
+    </div>
+    <div id="cold-md-8">
+        <div id="juego">
+        <div id="bombo">
 
         </div>
 
@@ -60,8 +82,10 @@
                     <td id="numero26">&nbsp;nbsp;</td>
                 </tr>
             </table>
-            <h3><a href="#" id="Nuevo" >Carton nuevo</a></h3>
+            <h3><a href="#" id="btnbingo">Bingo</a></h3>
         </div>
+    </div>
+    </div>
      <p id="demo"></p>
 
     </body>
